@@ -528,3 +528,27 @@ html {
 .link-btn:hover {
   color: #ff0505;
 }
+
+@media (max-width: 1200px) {
+  .contains-product {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .contains-product {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .contains-product {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .contains-product {
+    grid-template-columns: 1fr;
+  }
+}

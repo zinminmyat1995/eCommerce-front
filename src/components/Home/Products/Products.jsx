@@ -25,8 +25,6 @@ const Products = () => {
 
   return (
     <div className="sub-container" id="products">
-      
-
       {store.state.products.length > 0 ? (
         sortedGroups.map((group, idx) => (
           <div key={idx} className="category-group"  id={`category${idx+1}`}>

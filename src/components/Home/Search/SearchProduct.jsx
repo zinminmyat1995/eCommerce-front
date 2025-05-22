@@ -23,13 +23,8 @@ const SearchProduct = ({ data }) => {
 	<div>
 	  <h2 className="sub-container mb-3">Search Data</h2>
 	  <div
-		className="sub-container"
+		className="contains-product sub-container"
 		id="products"
-		style={{
-		  display: "grid",
-		  gridTemplateColumns: `repeat(${columnCount}, 1fr)`,
-		  gap: "1rem",
-		}}
 	  >
 		{paddedProducts.length > 0 ? (
 		  paddedProducts.map((product, index) =>

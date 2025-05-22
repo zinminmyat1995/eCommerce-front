@@ -1,5 +1,4 @@
 import "./Product.css";
-// import headphones_pink from "../assets/images/airpods_max_pink.jpg";
 import { FaStar } from "react-icons/fa";
 import { useGlobalContext } from "../../../GlobalContext/GlobalContext";
 import { toast } from "react-toastify";
@@ -16,7 +15,7 @@ const Product = ({ product }) => {
     <div className="product-container">
       <div className="image">
         <img
-          src={product?.product_image || headphones_pink}
+          src={product?.product_image}
           alt="Product Image"
           width={"100%"}
         />
@@ -30,7 +29,7 @@ const Product = ({ product }) => {
               <span>$</span><span className="actual-product-price">{product?.price}.00</span>
             </h5>
           </div>
-          <h5 style={{color: "gray" , fontSize: "1rem"}}>{product?.description}</h5>
+          {/* <h5 style={{color: "gray" , fontSize: "1rem"}} className="product-description">{product?.description}</h5> */}
           <div className="star-rating">
             {/* <div className="star">{stars}</div> */}
             <span>{product?.remain} Left</span>
@@ -62,7 +61,6 @@ const Product = ({ product }) => {
           )}
         </div>
       </div>
-      {/* <div className="heart"></div> */}
     </div>
   );
 };

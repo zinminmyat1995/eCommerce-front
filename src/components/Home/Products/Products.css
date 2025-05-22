@@ -1,5 +1,6 @@
 .contains-product {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 2rem;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+  gap: 1rem; /* spacing between products */
+  margin-top: 1rem;
 }
