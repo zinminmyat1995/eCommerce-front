@@ -46,7 +46,7 @@
 }
 
 .star-rating * {
-  color: gold;
+  color: #ff8b15;
 }
 
 .add-to-cart {
@@ -99,6 +99,6 @@
 }
 
 .actual-product-price {
-  font-size: 1rem;
+  font-size: 1.1rem !important;
   color: #ff8b15;
 }

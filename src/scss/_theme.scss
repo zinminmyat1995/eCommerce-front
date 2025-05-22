@@ -513,3 +513,18 @@ html {
 .links a:hover {
   color: red !important;
 }
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #000000;
+  // text-decoration: underline;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 1rem;
+  padding: 0;
+}
+
+.link-btn:hover {
+  color: #ff0505;
+}

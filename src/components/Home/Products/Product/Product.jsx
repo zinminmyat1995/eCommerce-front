@@ -27,13 +27,13 @@ const Product = ({ product }) => {
           <div className="name-price-product">
             <h4>{product?.name}</h4>
             <h5>
-              $<span className="actual-product-price">{product?.price}.00</span>
+              <span>$</span><span className="actual-product-price">{product?.price}.00</span>
             </h5>
           </div>
-          <h5>{product?.description}</h5>
+          <h5 style={{color: "gray" , fontSize: "1rem"}}>{product?.description}</h5>
           <div className="star-rating">
-            <div className="star">{stars}</div>
-            <span>({parseInt(Math.random() * 100)} Reviews)</span>
+            {/* <div className="star">{stars}</div> */}
+            <span>{product?.remain} Left</span>
           </div>
         </div>
         <div>
