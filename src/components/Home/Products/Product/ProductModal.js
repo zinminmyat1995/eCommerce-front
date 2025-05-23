@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 import { useGlobalContext } from "../../../GlobalContext/GlobalContext";
 
 const ProductModal = ({ product, onClose, visible }) => {
-  const { store } = useGlobalContext(); // ✅ fix: get store from context
+  const { store } = useGlobalContext(); 
 
   return (
 	<CModal
