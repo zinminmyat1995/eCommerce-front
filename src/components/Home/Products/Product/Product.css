@@ -101,3 +101,30 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+
+.product-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+
+.external-button {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  padding: 7px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-left: 5px;
+}
+
+.external-button:hover {
+  background-color: #ff0000;
+  border-color: #ff0000;
+  color: white;
+}
+
+.no-margin-header {
+  border-bottom: 0 !important;
+}

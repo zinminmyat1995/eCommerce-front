@@ -1,16 +1,23 @@
 import "./Product.css";
-import { FaStar } from "react-icons/fa";
+import { useState } from "react";
+import { FaStar, FaInfoCircle } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi"; 
 import { useGlobalContext } from "../../../GlobalContext/GlobalContext";
 import { toast } from "react-toastify";
+import ProductModal from './ProductModal';
 
 const Product = ({ product }) => {
   let {store} = useGlobalContext();
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+
   let stars = [];
   for (let i = 0; i < product?.rating; i++) {
     stars.push(<FaStar key={i} />);
   }
   const isInCart = product?.addedToCart;
-  console.log("isInCart",isInCart)
+
   return (
     <div className="product-container">
       <div className="image">
@@ -59,8 +66,34 @@ const Product = ({ product }) => {
               Remove from cart
             </button>
           )}
+          <button
+            className="external-button"
+            title="View Details"
+             onClick={() => {
+              setSelectedProduct(product);
+              setShowModal(true);
+            }}
+          >
+            <FiExternalLink size={18} />
+          </button>
         </div>
       </div>
+
+      {showModal && selectedProduct && (
+        <ProductModal
+          visible={showModal}
+          product={{
+            ...selectedProduct,
+            isInCart: selectedProduct?.addedToCart,
+          }}
+          store={store}
+          onClose={() => {
+            setShowModal(false);
+            setSelectedProduct(null); // Clear after close
+          }}
+        />
+      )}
+
     </div>
   );
 };
