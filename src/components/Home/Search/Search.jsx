@@ -14,6 +14,7 @@ const Search = () => {
 
 const handleSearch = () => {
   const trimmedQuery = query.trim();
+
   if (!trimmedQuery) {
 	setSearchData([]);
 	store.setSearchResults([]);
@@ -29,7 +30,6 @@ const handleSearch = () => {
   store.setSearchResults(results);
   setSearched(true);
 };
-
 
   return (
 	<main>

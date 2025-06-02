@@ -88,7 +88,7 @@ const reducer = (state, action) => {
       ...state,
       cart: [...state.cart, product],
       cartQuantity: state.cartQuantity + 1,
-      cartTotal: state.cartTotal + product.price,
+      cartTotal: (parseFloat(state.cartTotal) + parseFloat(product.price)).toFixed(2),
     };
   }
   // Remove from cart
@@ -126,7 +126,7 @@ const reducer = (state, action) => {
 
     return {
       ...state,
-      cartTotal: state.cartTotal + product.price,
+      cartTotal: (parseFloat(state.cartTotal) + parseFloat(product.price)).toFixed(2),
     };
   }
 
@@ -185,39 +185,25 @@ const useStore = () => {
   };
   const getProducts = () => {
 
-    const data = DATA;
-    console.log("DDD",data)
-    let modifiedData = data.map((product) => {
-      return { ...product, addedToCart: false };
-    });
-    // let cart = (await localforage.getItem("cartItems")) || [];
-    let cart =  [];
-    dispatch({
-      type: actions.GET_PRODUCTS,
-      products: modifiedData,
-      backed_up_cart: cart,
-    });
-
-    // fetch(`${import.meta.env.VITE_API_URL}/get-products`)
-    //   .then(async (response) => {
-    //     const data = await response.json();
-    //     console.log("DDD",data)
-    //     let modifiedData = data.map((product) => {
-    //       return { ...product, addedToCart: false };
-    //     });
-    //     let cart = (await localforage.getItem("cartItems")) || [];
-    //     dispatch({
-    //       type: actions.GET_PRODUCTS,
-    //       products: modifiedData,
-    //       backed_up_cart: cart,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     toast.error(
-    //       "There was a problem fetching products, check your internet connection and try again"
-    //     );
-    //     return [];
-    //   });
+    fetch(`http://127.0.0.1:8000/api/get-products`)
+      .then(async (response) => {
+        const data = await response.json();
+        let modifiedData = data.map((product) => {
+          return { ...product, addedToCart: false };
+        });
+        let cart = (await localforage.getItem("cartItems")) || [];
+        dispatch({
+          type: actions.GET_PRODUCTS,
+          products: modifiedData,
+          backed_up_cart: cart,
+        });
+      })
+      .catch((err) => {
+        toast.error(
+          "There was a problem fetching products, check your internet connection and try again"
+        );
+        return [];
+      });
   };
 
   const addQuantity = (product) => {
@@ -238,10 +224,11 @@ const useStore = () => {
       cost_after_delivery_rate: order.costAfterDelieveryRate,
       promo_code: order.promo_code || "",
       contact_number: order.phoneNumber,
+      address: order.Address,
       user_id: order.user_id,
     };
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/place-order`,
+      `http://127.0.0.1:8000/api/place-order`,
       {
         method: "POST",
         headers: {
@@ -259,6 +246,7 @@ const useStore = () => {
     }
     toast.success(data.message);
     clearCart();
+    getProducts();
     return true;
   };
 

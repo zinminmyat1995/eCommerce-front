@@ -1,3 +1,14 @@
 .small-rounded{
     padding: .3rem 1rem !important;
 }
+.account-user {
+    display: flex;
+    align-items: center;
+    /* gap: 5px; */
+  }
+  .account-user a {
+    display: flex;
+    align-items: center;
+  }
+
+  

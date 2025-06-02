@@ -52,7 +52,7 @@ const DeliveryView = () => {
               return (
                 <DeliveryItem key={order._id} order={order}></DeliveryItem>
               );
-            })) || <Skeleton height={500}></Skeleton>}
+            })) || <Skeleton height={500} style={{display: "block"}}></Skeleton>}
         </div>
       )}
     </div>

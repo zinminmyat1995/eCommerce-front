@@ -18,6 +18,7 @@ const Product = ({ product }) => {
   }
   const isInCart = product?.addedToCart;
 
+  console.log("isInCart",isInCart)
   return (
     <div className="product-container">
       <div className="image">
